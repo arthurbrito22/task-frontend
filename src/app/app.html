@@ -1,7 +1,6 @@
 <div class="container">
   <h2 class="title">📋 Gerenciador de Tarefas</h2>
 
-  <!-- Formulário de Cadastro -->
   <form (ngSubmit)="onSubmit()" class="form-card">
     <h3 class="form-title">➕ Nova Tarefa</h3>
 
@@ -35,7 +34,6 @@
     </button>
   </form>
 
-<!-- Bloco de Pesquisa por ID -->
 <div class="form-card">
   <h3 class="form-title">🔍 Pesquisar Tarefa por ID</h3>
   
@@ -57,7 +55,6 @@
     }
   </div>
 
-  <!-- Resultado Encontrado -->
   @if (tarefaEncontrada()) {
     <div class="task-item" style="margin-top: 1rem; border-color: #2ecc71; background-color: #f8fcf9;">
       <div class="task-info">
@@ -76,7 +73,6 @@
     </div>
   }
 
-  <!-- Mensagem de Erro -->
   @if (erroBusca()) {
     <div class="empty-msg" style="margin-top: 1rem; padding: 1rem; color: #d35400; background-color: #ffeaa7;">
       ⚠️ {{ erroBusca() }}
@@ -84,7 +80,6 @@
   }
 </div>
 
-  <!-- Lista de Tarefas -->
   <h3 class="section-title">Minhas Tarefas</h3>
 
   @if (tasks().length === 0) {
@@ -95,7 +90,6 @@
     <ul class="task-list">
       @for (task of tasks(); track task.id) {
         <li class="task-item">
-          <!-- Coluna 1: Informações -->
           <div class="task-info">
             <span class="task-title" [style.text-decoration]="task.completa ? 'line-through' : 'none'">
               {{ task.titulo }}
@@ -105,14 +99,12 @@
             }
           </div>
 
-          <!-- Coluna 2: Status Fixado -->
           <div class="status-container">
             <span class="badge" [class.badge-completed]="task.completa" [class.badge-pending]="!task.completa">
               {{ task.completa ? 'Concluída' : 'Pendente' }}
             </span>
           </div>
 
-          <!-- Coluna 3: Botões -->
           <div class="actions-group">
             @if (task.id) {
               <button

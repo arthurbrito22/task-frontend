@@ -57,12 +57,10 @@ export class AppComponent implements OnInit {
   onToggleComplete(task: Task): void {
     if (!task.id) return;
 
-  // Cria uma cópia da tarefa com o status invertido
     const tarefaAtualizada: Task = { ...task, completa: !task.completa };
 
     this.taskService.updateTask(task.id, tarefaAtualizada).subscribe({
       next: (resposta) => {
-      // Atualiza o Signal substituindo a tarefa antiga pela nova na lista
         this.tasks.update((lista) =>
           lista.map((t) => (t.id === resposta.id ? resposta : t))
         );
